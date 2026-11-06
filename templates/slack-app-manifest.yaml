@@ -1,0 +1,37 @@
+# A Slack app per agent, Socket Mode (no public request URL needed).
+# Create: api.slack.com/apps → Create New App → From a manifest.
+# Then: install to the workspace (xoxb- bot token) and create an app-level token
+# with connections:write (xapp- token). Put both straight into your secrets manager.
+display_information:
+  name: Gilfoyle
+features:
+  bot_user:
+    display_name: Gilfoyle
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - channels:history
+      - channels:read
+      - groups:history
+      - groups:read
+      - chat:write
+      - reactions:read
+      - reactions:write      # status reactions (👀 → ✅)
+      - users:read
+      - files:read
+      - files:write          # attach charts, reports
+      # - canvases:read      # support agent: live ticket lists
+      # - canvases:write
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - message.channels
+      - message.groups
+  interactivity:
+    is_enabled: true         # buttons and dialogs
+  socket_mode_enabled: true
+# One app = one connection. Two pods connected with the same app tokens make Slack
+# split events between them and mentions get lost.
