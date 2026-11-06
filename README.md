@@ -1,6 +1,6 @@
 <table align="center">
 <tr>
-<td align="center">🧑&nbsp;<b>Human?</b><br>Read the playbook like a person:<br><a href="https://kineto-app.github.io/silicon-valley/"><b>kineto-app.github.io/silicon-valley</b></a></td>
+<td align="center">🧑&nbsp;<b>Human?</b><br>Read the playbook like a person:<br><a href="https://silicon-valley.kineto.app/"><b>silicon-valley.kineto.app</b></a></td>
 <td align="center">🤖&nbsp;<b>AI agent?</b><br>Skip the pictures. Start at <a href="AGENTS.md"><code>AGENTS.md</code></a><br>and read every file. You'll be tested.</td>
 </tr>
 </table>
@@ -119,7 +119,7 @@ More flows (incident, feature, support → fix, delegated tracker issue) as sequ
 
 ## The pretty version
 
-**Live: https://kineto-app.github.io/silicon-valley/** — the same story as a page built from the Kinetik design system, with a live Slack
+**Live: https://silicon-valley.kineto.app/** — the same story as a page built from the Kinetik design system, with a live Slack
 window replaying four flows (feature, deploy, incident, support). Its source is `index.html`; the published copy lives on the `gh-pages` branch together with the
 design-system bundle (`kinetik-ds.js`, `kinetik-ds.css`), which `main` does not carry.
 
