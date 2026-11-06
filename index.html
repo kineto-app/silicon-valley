@@ -192,6 +192,10 @@
   #kds-top .overscroll-contain { overscroll-behavior: auto; }
   /* On touch screens the thread keeps scrolling itself as messages type in; a finger on it scrolls the page. */
   @media (pointer: coarse) { #kds-top .overscroll-contain { overflow-y: hidden; touch-action: pan-y; } }
+  /* the hero renders from JS; until it does, hold the first screen and keep the static sections from flashing at the top */
+  #kds-top:empty { min-height: 100vh; }
+  #kds-top:empty ~ * { visibility: hidden; animation: kds-reveal 0s 4s forwards; }
+  @keyframes kds-reveal { to { visibility: visible; } }
   /* The demo's tab row scrolls sideways on phones; keep the scrollbar out of sight. */
   #kds-top [role="tablist"] { scrollbar-width: none; }
   #kds-top [role="tablist"]::-webkit-scrollbar { display: none; }
