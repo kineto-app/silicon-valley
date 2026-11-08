@@ -37,7 +37,7 @@ Read access is wide on purpose — an SRE that cannot see is useless.
 
 | System | Access | Notes |
 |---|---|---|
-| Kubernetes, cloud provider | read | identity bound to the pod; no mutating verbs |
+| Cluster, cloud provider | read | identity bound to the pod; no mutating verbs |
 | Metrics, logs, traces | read | through small query wrappers that return verdicts, not dumps |
 | Production database | read, **replica only** | through a wrapper that cannot write |
 | Analytics warehouse | read | |

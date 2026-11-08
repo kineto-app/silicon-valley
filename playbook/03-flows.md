@@ -60,7 +60,7 @@ sequenceDiagram
 
     M->>G: alert posted to #alerts
     G->>G: recent change scan (commits, deploys, overrides)
-    G->>G: read-only investigation: metrics, logs, traces, k8s, DB replica
+    G->>G: read-only investigation: metrics, logs, traces, cluster, DB replica
     G->>O: what fired → evidence → cause → unknown → next (@author if a change correlates)
     alt minimal high-confidence fix
         G->>O: "fix at file:line, risk X — open a PR?"

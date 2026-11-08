@@ -12,6 +12,9 @@ oauth_config:
   scopes:
     bot:
       - app_mentions:read
+      # *:history + message.* below hand the bot EVERY message in every channel it is in, not only
+      # mentions. The SRE agent needs that for alert and intake channels; a support agent that reads
+      # customer data does not: drop these four and let its poller summon it instead.
       - channels:history
       - channels:read
       - groups:history
@@ -20,7 +23,7 @@ oauth_config:
       - reactions:read
       - reactions:write      # status reactions (👀 → ✅)
       - users:read
-      - files:read
+      - files:read           # only if the agent reads attachments from Slack; otherwise drop
       - files:write          # attach charts, reports
       # - canvases:read      # support agent: live ticket lists
       # - canvases:write
@@ -28,10 +31,13 @@ settings:
   event_subscriptions:
     bot_events:
       - app_mention
-      - message.channels
+      - message.channels     # see the note on *:history above
       - message.groups
   interactivity:
     is_enabled: true         # buttons and dialogs
   socket_mode_enabled: true
+  # Bot tokens are long-lived by default. If your harness can refresh tokens, turn rotation on so a
+  # leaked xoxb- dies in 12 hours; if it can't, the bot dies instead, so leave this off until it can.
+  # token_rotation_enabled: true
 # One app = one connection. Two pods connected with the same app tokens make Slack
 # split events between them and mentions get lost.

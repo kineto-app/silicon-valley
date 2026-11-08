@@ -47,7 +47,7 @@ line each (sources and the longer list in [playbook/00](playbook/00-what-the-ind
 
 ## The staff
 
-<p align="center"><img src="assets/screens/cast.png" alt="Trading cards for Gilfoyle (SRE), Dinesh (developer) and Donald (support) with their stats and permissions" width="900"></p>
+<p align="center"><img src="assets/screens/cast.png" alt="Trading cards for Gilfoyle (SRE), Dinesh (developer), Donald (support) and Jian-Yang (code review) with their stats and permissions" width="900"></p>
 
 | | Bot | Day job | Superpower | Not allowed, ever |
 |---|---|---|---|---|
@@ -120,8 +120,9 @@ More flows (incident, feature, support → fix, delegated tracker issue) as sequ
 ## The pretty version
 
 **Live: https://silicon-valley.kineto.app/** — the same story as a page built from the Kinetik design system, with a live Slack
-window replaying four flows (feature, deploy, incident, support). Its source is `index.html`; the published copy lives on the `gh-pages` branch together with the
-design-system bundle (`kinetik-ds.js`, `kinetik-ds.css`), which `main` does not carry.
+window replaying four flows (feature, deploy, incident, support). Its source is `index.html` and `sv.js`; the `gh-pages` branch carries the same files plus the
+design-system bundle (`kinetik-ds.js`, `kinetik-ds.css`), which `main` does not carry. The bundle is Kineto's own and is **not** under CC BY; it embeds open-source
+libraries (React, Tailwind, Radix and others) that keep their MIT licences.
 
 ## The Kineto team
 

@@ -13,7 +13,7 @@ flowchart TB
         GW[Agent gateway<br/>Slack socket connection, sessions,<br/>model calls, tool routing]
         MODEL[(LLM)]
         GUARD[Guard plugin<br/>blocks mutating commands<br/>fail-closed at boot]
-        WRAP[Tool wrappers<br/>read-only DB, metrics query,<br/>k8s triage, deploy gate]
+        WRAP[Tool wrappers<br/>read-only DB, metrics query,<br/>cluster triage, deploy gate]
         MCP[Tools server<br/>holds credentials,<br/>checks approvals]
         CRON[Deterministic workers<br/>intake · merge watch · poller ·<br/>sentry · memory compaction]
         MEM[(Workspace memory<br/>MEMORY.md + daily notes)]
@@ -82,8 +82,9 @@ attacker. What matters is the slot and what it has to give the agents.
   tokens.
 - **A UI-only "pause" on a CI job is not config.** The next config-as-code import erased ours. If a
   switch matters, it lives in the repo.
-- **API keys default to short expiry.** An expired admin key turned every lookup into a 401 with nothing
-  else failing. Set the longest expiry and put renewal on a calendar.
+- **An expired key fails quietly.** An expired admin key turned every lookup into a 401 with nothing
+  else failing. Keep the expiry short, but rotate it automatically before it runs out, and alert on a
+  burst of 401s from a wrapper: silence is the failure mode.
 - **Sandboxed code-execution bridges can't wait.** Delays inside the sandbox die; waits belong on the
   host side.
 - **Tool output may pass through a redaction layer.** Parse data in the shell and return the small verdict.

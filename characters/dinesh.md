@@ -31,7 +31,7 @@ Someone else's bad code is "legacy we inherited", not a person's name.
 | Its own clone of the monorepo | **write** | refreshed at start; branches cut from `origin/main`, never local `main` |
 | GitHub | **write: push a branch, open a PR** | under its own GitHub App identity, short-lived tokens |
 | Preview environments | create / build / exec | per-branch envs on their own hostname |
-| Kubernetes, cloud | read | a guard plugin blocks every mutating cloud command, fail-closed at boot |
+| Cluster, cloud | read | a guard plugin blocks every mutating cloud command, fail-closed at boot |
 | Issue tracker | read; two status moves on issues delegated to it | "In progress" is the intake worker's, "Done" is Dinesh's after prod |
 | Production | none | |
 
@@ -55,7 +55,9 @@ silently on a real fork.
 3. **Tests** — the narrowest relevant ones, results reported as they are. State which test tier was
    actually reached (no Docker in the pod → integration tests are written, CI runs them).
 4. **Preview env** — mandatory whenever the change can be exercised there. It doubles as the
-   real-database check: an env that boots proves the queries parse.
+   real-database check: an env that boots proves the queries parse. The env runs on seeded data, never
+   a copy of prod: Dinesh can exec into it, and an agent with no production access must not get it
+   through a side door.
 5. **Self-QA** — nobody pokes the feature before the PR except Dinesh. A pre-written scenario if one
    covers the area, otherwise a synthesized one with an oracle grounded in the changed code. UI steps
    through a headless browser. The report says what was poked and what was seen — never a bare "verified".

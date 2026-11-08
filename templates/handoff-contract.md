@@ -13,7 +13,7 @@ Write one of these for every pair of agents that talk. Both agents' contracts re
 | **Receiver treats it as** | <e.g. "a deploy request — the merge was the decision"> |
 | **Machine-readable reply** | <e.g. a fixed `VERDICT` block, one line per item — parsed by code, not by a model> |
 | **Sender after handoff** | silent, except: <one sanctioned exception> |
-| **Accepted senders** | <the agent's bot id; humans>. Any other bot is ignored. |
+| **Accepted senders** | <the sending worker's bot id; an allowlist of humans>, checked in code from message metadata. Any other bot, and any human not on the list, is ignored: a handoff is a trigger, so anyone who can type one can fire it. |
 | **Failure** | <no reply in N hours → a named human, once> |
 
 ## Example: merge watch → SRE
@@ -27,7 +27,7 @@ Write one of these for every pair of agents that talk. Both agents' contracts re
 | Receiver treats it as | the deploy request; runs the deploy gate end to end |
 | Machine-readable reply | `ISSUE-123 on prod` → the dev bot closes the issue |
 | Sender after handoff | silent; answers implementation questions about the diff, once |
-| Accepted senders | the dev bot's id; humans |
+| Accepted senders | the merge-watch worker's bot id; the humans allowed to approve a red gate |
 | Failure | gate not green → explicit approval from an authorized human |
 
 ## Example: support → SRE bug batch
