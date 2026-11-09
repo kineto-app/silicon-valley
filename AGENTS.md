@@ -49,5 +49,5 @@ in order. It's about 30 minutes for a human and considerably less for you.
 
 Implementation details of Kineto's own deployment (identifiers, endpoints, credentials, internal
 names) are deliberately left out. Don't go looking for them; describe your own stack instead.
-`index.html` is the human version of the same content, built on a design-system bundle that isn't in
+`index.html` is the human version of the same content, styled with a design-system stylesheet that isn't in
 this branch. You can skip it.

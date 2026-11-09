@@ -119,10 +119,10 @@ More flows (incident, feature, support → fix, delegated tracker issue) as sequ
 
 ## The pretty version
 
-**Live: https://silicon-valley.kineto.app/** — the same story as a page built from the Kinetik design system, with a live Slack
-window replaying four flows (feature, deploy, incident, support). Its source is `index.html` and `sv.js`; the `gh-pages` branch carries the same files plus the
-design-system bundle (`kinetik-ds.js`, `kinetik-ds.css`), which `main` does not carry. The bundle is Kineto's own and is **not** under CC BY; it embeds open-source
-libraries (React, Tailwind, Radix and others) that keep their MIT licences.
+**Live: https://silicon-valley.kineto.app/** — the same story as a page, with a live Slack window replaying four flows (feature,
+deploy, incident, support). Its source is `index.html` and `sv.js`: plain HTML and one script, no framework. The page is styled with
+the Kinetik design-system stylesheet (`kinetik-ds.css`), which only the `gh-pages` branch carries; the stylesheet is Kineto's own and
+is **not** under CC BY. The fonts inside it keep their own licences (JetBrains Sans is JetBrains'; Lato and JetBrains Mono are SIL OFL).
 
 ## The Kineto team
 
